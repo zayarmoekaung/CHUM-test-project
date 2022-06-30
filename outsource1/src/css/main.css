@@ -1,0 +1,85 @@
+.black{
+    
+    background-color: rgb(28, 24, 49);
+    box-shadow: 2px 4px #888888;
+    position:sticky;
+    top: 0px;
+}
+.mnav{
+    height: 8%;
+    padding-left: 5%;
+    
+}
+.toolbar{
+    height: 6%;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: white;
+}
+.pageinput{
+    width: 10%;
+    min-width: 20px;
+}
+.imgview{
+    overflow: auto;
+    height: 80%;
+    width: 100%;
+    background-color: antiquewhite;
+}
+.imgframe{
+    height: auto;
+    width: 100%;
+    position: relative;
+    
+    
+}
+.img{
+    height: auto;
+    width: 100%;
+    margin: auto;
+}
+#tools > * {
+
+    margin: 5px;  
+}
+a{
+    font-size: 1.5em;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.minimum{
+    height: 80vh;
+    width: 25vw;
+    min-width: 300px;
+}
+.fullscreen{
+    height: 100vh;
+    width: 100vw;
+}
+.canv{
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    z-index: 1;
+    position:absolute;
+}
+#tip {
+    background-color:white;
+    border:1px solid blue;
+    position:absolute;
+    left:-200px;
+    top:100px;
+    z-index: 2;
+}
+#tooltip{
+    stroke: black;
+    stroke-width: 1px;
+    background-color: whitesmoke;
+    position:absolute;
+    left:200px;
+    top:100px;
+    z-index: 2;
+    display: none;
+}
