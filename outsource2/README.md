@@ -1,27 +1,74 @@
-# Simple MVC PHP Framework
+Queue Administration System
 
-## Description
-Some years ago I taught a programming course for a private training school. I built a simple ecommerce with the students. This ecommerce was based on a simple MVC framework based on PHP. Then, people who have continued with code and programming, already had a smattering of what means MVC before get their hands on a real framework. With this repo I am going to show you how create a simple PHP application following the MVC pattern (Model-View-Controller). 
+Used frameworks and SDK/s
+ - Symfony 
+ - Simple MVC PHP Framework by gmaccario
+ - AWS PHP SDK : AWS DynamoDb , AWS SQS
 
-## Requirements
-PHP >=7.1.20 
-Composer
 
-## Tested on 
-PHP 7.1.20 Apache
 
-## Installation
-```
-git clone https://github.com/gmaccario/simple-mvc-php-framework.git
-```
-Or download the package from [Github](https://github.com/gmaccario/simple-mvc-php-framework).
+Configuration 
+to setup on your server you may need to reconfigure the config.php
 
-Then:
-1. Set up and run your webserver (e.g. Apache);
-2. Open your browser;
-3. Go to the index page (often localhost).
+config/config.php
 
-**Note**: if you decided to put the framework into a subfolder, open */config/config.php* and set up the name of the subfolder here *URL_SUBFOLDER*
+'URL_ROOT'      - you have to define the root directory of the project. default will be '/'
+'URL_SUBFOLDER' - to define the subfolder for the url, can leave blank  if you are running the project at root directory.  
 
-## # Simple MVC PHP Framework on my blog
-https://www.giuseppemaccario.com/how-to-build-a-simple-php-mvc-framework/
+API 
+
+Send Queue Message - POST 
+
+{{baseUrl}}/sendqueue 
+Body {
+    "requesterId":{requesterId},
+   
+    "message":{Message},
+    "priority":{requestId},
+    "resultUrl":{resultUrl}
+    
+}
+
+Response : {
+    "RequestId": "18be2e80-6bd4-4e02-87ef-388e24c92ef6"
+}
+
+
+Get Status - GET
+
+{{baseUrl}}/get_status/{RequestId}
+
+Response : {
+    "requestId": "{requestId}",
+    "status": "{Status}"
+}
+
+Request Message - GET
+
+{{baseUrl}}/req_queue/
+
+Body: {
+    "consumerId":"688688",
+     "consumerType":"TypeA"
+    }
+
+Response : {
+    "RequestId": "{requestId}",
+    "Message": "{message}"
+}    
+
+
+Post Result - POST
+
+{{baseUrl}}/post_result
+
+Body : {
+    "requestId":"{requestId}",
+     "result":"{result}"
+    
+}
+
+Response : 200 
+
+
+
