@@ -5,7 +5,7 @@ define('SITE_NAME', 'MLAC');
 //App Root
 define('APP_ROOT', dirname(dirname(__FILE__)));
 define('URL_ROOT', '/');
-define('URL_SUBFOLDER', 'CHUM/outsource2');
+define('URL_SUBFOLDER', 'CHUM-test-project/outsource2');
 
 //DB Params
 define('DB_HOST', 'your-host');
