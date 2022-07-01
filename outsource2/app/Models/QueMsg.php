@@ -175,25 +175,42 @@ class QueMsg{
         'ConsistentRead' => true,
         'TableName' => 'request',
         'Key'       => array(
-            'requestId'   => array('S' => $requestId)
+            'requestId'   => array('S' =>$requestId)
            
         )
     ));
     
     return $result;
    }
-   public function SearchByType(){
+   public function SearchByType($contype){
+    $dyndb = $this->db->getClient();
     $iterator = $dyndb->getIterator('Scan', array(
         'TableName' => 'request',
         'ScanFilter' => array(
-            'requestId' => array(
+            'consumerType' => array(
                 'AttributeValueList' => array(
-                    array('S' => $requestId)
+                    array('S' => $contype)
                 ),
                 'ComparisonOperator' => 'CONTAINS'
             )
         )
     ));
+    return $iterator;
+   }
+   public function SearchByStatus($qstatus){
+    $dyndb = $this->db->getClient();
+    $iterator = $dyndb->getIterator('Scan', array(
+        'TableName' => 'request',
+        'ScanFilter' => array(
+            'qstatus' => array(
+                'AttributeValueList' => array(
+                    array('S' => $qstatus)
+                ),
+                'ComparisonOperator' => 'CONTAINS'
+            )
+        )
+    ));
+    return $iterator;
    }
     public  function setValues($data){
        

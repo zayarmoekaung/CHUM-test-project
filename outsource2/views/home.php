@@ -18,24 +18,34 @@
 
 <header class="navbar">
 <section class="navbar-section">
-<select name="consumerType" id="contype">
-<option value="All" selected disabled>Consumer Type</option> 
+<form action="<?php echo $routes->get('homepage')->getPath(); ?>" method="POST"> 
+<select name="consumerType" id="contype" onchange="this.form.submit()">
+<option value= "All" selected disabled>Consumer Type</option>
+<option value="TypeA" >Type A</option>
+<option value="TypeB" >Type B</option>
+<option value="TypeC" >Type C</option>    
 </select>
-<select name="Queue Status" id="qstatus">
+</form>
+<form action="<?php echo $routes->get('homepage')->getPath(); ?>" method="POST">
+<select name="qstatus" id="qstatus" onchange="this.form.submit()">
 <option value="All" selected disabled>Queue Status</option>  
-<option value="Waiting for consumer">waiting For Consumer</option>
+<option value="Waiting for Consumer">Waiting for Consumer</option>
 
 
-<option value="Working on consumer">Working on consumer</option>
+<option value="Working on Consumer">Working on Consumer</option>
 
 
-<option value="Work done Successfully">Work Done Successfully</option>
+<option value="Work done Successfully">Work done Successfully</option>
 
 
-<option value="Work done Error">Work Done Error</option>
+<option value="Work done Error">Work done Error</option>
 
 
 </select>
+</form>
+<?php if (isset($keyword)) {
+  echo('<h4>'.$keyword .'</h4>');
+}   ?>
 </section>
   <section class="navbar-section">
   <form action="<?php echo $routes->get('homepage')->getPath(); ?>" method='POST'>
@@ -43,8 +53,8 @@
       <input  class="form-input" type="text" placeholder="request Id" name="requestId">
       <button type="submit" class="btn btn-primary input-group-btn">Search</button>
     </div>
-</form>
-    <button  class="btn btn-primary input-group-btn"  onClick="window.location.reload();"><i class="icon icon-refresh"></i></button>
+</form> 
+    <button  class="btn btn-primary input-group-btn"  onClick="location.href='<?php echo $routes->get('homepage')->getPath(); ?>'"><i class="icon icon-refresh"></i></button>
   </section>
 </header>
 <table class="table">
